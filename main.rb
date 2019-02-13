@@ -4,6 +4,7 @@
 # (800, 800).
 
 require_relative 'ship'
+require './missile.rb'
 
 class GalagaInvaders
 
@@ -13,15 +14,17 @@ class GalagaInvaders
   def initialize
     @caption = "Galaga Invaders"
     @ship = Ship.new(SCREEN_WIDTH / 2, HEIGHT - Ship::HEIGHT)
+    @missile_manager = MissileManager.new
   end
 
   def update
-    @ship.move_missiles
+    @ship.move
+    @missile_manager.move_missiles
   end
 
   def draw
     @ship.draw
-    @ship.draw_missiles
+    @missile_manager.draw_missiles
   end
 
   def show
@@ -34,11 +37,11 @@ class GalagaInvaders
   def key_pressed(key)
     case key
     when 'a'
-      @ship.move_left
+      @ship.move(-5)
     when 'd'
-      @ship.move_right
+      @ship.move(5)
     when ' '
-      @ship.fire_missile
+      @missile_manager.create_missile(@ship.x, @ship.y)
     end
   end
 
