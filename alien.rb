@@ -15,6 +15,14 @@ class Alien
   def move
   end
 
+  def ordnance_velocity
+    10
+  end
+
+  def muzzle_location
+    Vector(x, bottom_edge)
+  end
+
   def draw
     puts self
   end
@@ -34,3 +42,5 @@ class Alien
   end
 
 end
+
+Vector = Struct.new(:x, :y)
