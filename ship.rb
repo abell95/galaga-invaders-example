@@ -5,7 +5,7 @@ class Ship
 
   WIDTH = 100
   HEIGHT = 100
-  DEFAULT_VELOCITY = 5
+  DEFAULT_VELOCITY = 10
 
   attr_accessor :location
 
